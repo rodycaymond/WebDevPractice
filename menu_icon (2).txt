@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.menu-icon-container {
+display: flex;
+justify-content: center;
+background-color: red;
+}
+.menu-icon {
+width: 45px;
+height: 45px;
+margin: 10px 0px;
+background-color: black;
+overflow: hidden;
+}
+#bar1, #bar2, #bar3 {
+height: 5px;
+width: 90%;
+margin: 7px 5%;
+background-color: whitesmoke;
+border-radius: 10px;
+transition: 0.5s;
+position: relative;
+}
+</style>
+</head>
+<body>
+<div class="menu-icon-container">
+  <div class="menu-icon" onclick="makeX()">
+      <div id="bar1"></div>
+      <div id="bar2"></div>
+      <div id="bar3"></div>
+  </div>
+</div>
+</body>
+<script>
+var bar1 = document.getElementById('bar1');
+var bar2 = document.getElementById('bar2');
+var bar3 = document.getElementById('bar3');
+
+var flag = false;
+function makeX() {
+if (!flag){
+  bar1.style.transform = 'rotate(-45deg)';
+  bar3.style.transform = 'rotate(45deg)';
+  bar1.style.top = "12px";
+  bar3.style.bottom = "12px";
+  bar2.style.transform = 'translateX(55px)';
+  flag = true;
+  } else if (flag){
+  bar1.style.transform = 'rotate(0)';
+  bar3.style.transform = 'rotate(0)';
+  bar1.style.top = "0px";
+  bar3.style.bottom = "0px";
+  bar2.style.transform = 'translateX(0px)';
+  flag = false;
+  }
+};
+
+</script>
+</html>

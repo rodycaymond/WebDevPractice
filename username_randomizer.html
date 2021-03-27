@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>U-Generate</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        html {
+            font-family: Helvetica, sans-serif;
+        }
+        p {
+            font-size: 1.5em;
+        }
+        h1 {
+            text-align: center;
+            font-weight: lighter;
+            color: whitesmoke;
+            padding: 24px 0px;
+            font-size: 48px;
+        }
+        header {
+            background-color: rgb(27,27,27);
+        }
+        .text-block {
+            width: 60%;
+            margin: auto;
+            text-align: center;
+            margin-top: 48px;
+            margin-bottom: 48px;
+            font-weight: lighter;
+        }
+        body {
+            background: linear-gradient(45deg, rgb(46, 136, 38) 33%, rgb(180, 180, 180) 33% 66%, rgb(255, 255, 255) 66% 100%);
+        }
+        .container {
+            width: 60%;
+            margin: auto;
+            background-color: whitesmoke;
+            box-shadow: 0 0 5px grey;
+        }
+        #special-p {
+            font-size: 1em;
+            font-weight: lighter;
+            text-align: center;
+        }
+        .divider {
+            width: 90%;
+            height: 2px;
+            margin: auto;
+            background-color: rgb(216, 215, 215);
+        }
+        .name {
+            padding: 48px 0px;
+        }
+        h2 {
+            margin: 10px 32px;
+            font-weight: lighter;
+        }
+        .name-input {
+            width: 22%;
+            margin: 0% 4%;
+            height: 18px;
+            font-size: 16px;
+        }
+        .birthday {
+            padding: 48px 0px;
+        }
+        .birth-Input {
+            width: 22%;
+            margin: 0% 4%;
+            height: 18px;
+            font-size: 16px;
+        }
+        .int {
+            padding: 48px 0px;
+        }
+        .int-input {
+            width: 80%;
+            margin: 0px 32px;
+            height: 18px;
+            font-size: 16px;
+        }
+        .int-p{
+            font-size: 1em;
+            margin-left: 32px;
+            padding: 5px 0px;
+        }
+        .button {
+            text-align: center;
+            height: 32px;
+            width: 20%;
+            border-radius: 10px;
+            border: solid whitesmoke 3px;
+            margin-left: 20%;
+            padding: 10px 15px;
+            font-size: 32px;
+            background-color: rgb(148, 79, 33);
+            color: whitesmoke;
+            margin-top: 48px;
+            margin-bottom: 48px;
+        }
+        .button:hover {
+            cursor: pointer;
+            background-color:rgb(177, 96, 43);
+        }
+        .reveal {
+            width: 60%;
+            margin: auto;
+            box-shadow: 0 0 5px grey;
+            background-color: whitesmoke;
+            height: 180px;
+            margin-bottom: 48px;
+        }
+        .reveal p {
+            padding: 24px 32px;
+        }
+        footer {
+            color: whitesmoke;
+            background-color: rgb(27,27,27);
+            padding: 24px 0px;
+        }
+        footer p {
+            margin-left: 32px;
+        }
+    </style>
+</head>
+<header>
+    <h1>U-Generate</h1>
+</header>
+<body>
+    <p class="text-block">Need a truly randomized username based off of certain characteristics? Simply add a few <em>Bits</em> of information below
+     and watch the magic happen!</p>
+     <div class="container">
+         <p id="special-p">*Not all fields are required, but it's encouraged to generate a wider range of results</p>
+        <div class="name">
+            <h2>Name</h2>
+            <input id="firstName" class="name-input" placeholder="First"><input id="middleName" class="name-input" placeholder="Middle"><input id="lastName" class="name-input" placeholder="Last">
+        </div>
+        <div class='divider'></div>
+        <div class="birthday">
+            <h2>Birthday</h2>
+            <input id="birthDay" class="birth-Input" placeholder="Day"><input id="birthMonth" class="birth-Input" placeholder="Month"><input id="birthYear" class="birth-Input" placeholder="Year">
+        </div>
+        <div class='divider'></div>
+        <div class="int">
+            <h2>Interests</h2>
+            <p class="int-p">Comma-Space Separated - Single Words</p>
+            <input id="interests" class="int-input" placeholder="Interests">
+        </div>
+    </div>
+        <h3 class="button" onclick="testClick()">Give Me a Name!</h3>
+        <div class="reveal">
+            <p>Your Carefully Crafted Username is:</p>
+            <p id="generated-name"></p>
+        </div>
+</body>
+<footer>
+    <p>Created By Cody Raymond</p>
+</footer>
+<script>
+    var firstName = document.getElementById('firstName');
+    var middleName = document.getElementById('middleName');
+    var lastName = document.getElementById('lastName');
+    var birthDay = document.getElementById('birthDay');
+    var birthMonth = document.getElementById('birthMonth');
+    var birthYear = document.getElementById('birthYear');
+    var interests = document.getElementById('interests');
+    var generatedName = document.getElementById('generated-name');
+
+var finalWordBank = [];
+
+function addBio(){
+finalWordBank.push(firstName.value, middleName.value, lastName.value, birthDay.value, birthMonth.value, birthYear.value);
+};
+
+function convertDate(){
+    numDate = '0';
+    abrev = '';
+    month = birthMonth.value.toLowerCase();
+    switch(month){
+        case 'january': 
+        numDate = '01';
+        abrev = 'jan';
+        break;
+        case 'february': 
+        numDate = '02';
+        abrev = 'feb';
+        break;
+        case 'march': 
+        numDate = '03';
+        abrev = 'mar';
+        break;
+        case 'april': 
+        numDate = '04';
+        abrev = 'apr';
+        break;
+        case 'may': 
+        numDate = '05';
+        abrev = 'may';
+        break;
+        case 'june': 
+        numDate = '06';
+        abrev = 'jun';
+        break;
+        case 'july': 
+        numDate = '07';
+        abrev = 'jul';
+        break;
+        case 'august': 
+        numDate = '08';
+        abrev = 'aug';
+        break;
+        case 'september': 
+        numDate = '09';
+        abrev = 'sep';
+        break;
+        case 'october': 
+        numDate = '10';
+        abrev = 'oct';
+        break;
+        case 'november': 
+        numDate = '11';
+        abrev = 'nov';
+        break;
+        case 'december': 
+        numDate = '12';
+        abrev = 'dec';
+        break;
+        default: 
+        alert('Check your spelling on the month.');
+    }
+    if (numDate != '0'){
+        finalWordBank.push(numDate);
+    };
+    if (abrev != ''){
+        finalWordBank.push(abrev);
+    };
+};
+
+function convertYear(){
+    shortYear = Number(birthYear.value);
+    if (shortYear < 2000){
+        shortYear -= 1900;
+        finalWordBank.push(shortYear.toString());
+    } else if (shortYear === 2000){
+        shortYear = '00';
+        finalWordBank.push(shortYear);
+    } else if (shortYear > 2000 && shortYear < 2010){
+        shortYear -= 2000;
+        mod = '0' + shortYear.toString();
+        finalWordBank.push(mod);
+    } else if (shortYear >= 2010){
+        shortYear -= 2000;
+        finalWordBank.push(shortYear.toString());
+    }
+};
+
+function getFirstLet(){
+    finalWordBank.push(firstName.value[0].toLowerCase());
+    finalWordBank.push(middleName.value[0].toLowerCase());
+    finalWordBank.push(lastName.value[0].toLowerCase());
+};
+
+function breakInt(){
+var fix = interests.value;
+fix = fix + ', '
+broken = fix.split(', ');
+broken.forEach(word=>{
+    finalWordBank.push(word);
+});
+};
+
+var rando;
+var num;
+function randint(){
+rando = (Math.floor(Math.random()*3))+3;
+num = Math.floor(Math.random()*100);
+};
+
+var genBank = [];
+function randomize(){
+    randint();
+    finalWordBank.push(num.toString());
+for (let i = 0; i < rando; i++){
+    var pWord = finalWordBank[Math.floor(Math.random()*finalWordBank.length)]
+    genBank.push(pWord);
+    var r = finalWordBank.indexOf(pWord);
+    finalWordBank.splice(r,1);
+}
+};
+
+function testClick(){
+finalWordBank = [];
+genBank = [];
+addBio();
+convertDate();
+convertYear();
+getFirstLet();
+breakInt();
+randomize();
+generatedName.innerHTML = genBank.join('');
+};
+</script>
+</html>

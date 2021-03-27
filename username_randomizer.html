@@ -170,11 +170,11 @@
     var generatedName = document.getElementById('generated-name');
 
 var finalWordBank = [];
-
+#Adds all of the user input to the final word bank
 function addBio(){
 finalWordBank.push(firstName.value, middleName.value, lastName.value, birthDay.value, birthMonth.value, birthYear.value);
 };
-
+#Converts the month into a number and its abreviation
 function convertDate(){
     numDate = '0';
     abrev = '';
@@ -238,7 +238,7 @@ function convertDate(){
         finalWordBank.push(abrev);
     };
 };
-
+#Breaks the years into only the last two digits
 function convertYear(){
     shortYear = Number(birthYear.value);
     if (shortYear < 2000){
@@ -256,13 +256,13 @@ function convertYear(){
         finalWordBank.push(shortYear.toString());
     }
 };
-
+#Saves the first letter of each name as a separate string
 function getFirstLet(){
     finalWordBank.push(firstName.value[0].toLowerCase());
     finalWordBank.push(middleName.value[0].toLowerCase());
     finalWordBank.push(lastName.value[0].toLowerCase());
 };
-
+#Separates all of the interests into individual words for later use
 function breakInt(){
 var fix = interests.value;
 fix = fix + ', '
@@ -271,7 +271,7 @@ broken.forEach(word=>{
     finalWordBank.push(word);
 });
 };
-
+#Generates a random to use for determining how many words to combine in final word bank
 var rando;
 var num;
 function randint(){
@@ -290,7 +290,7 @@ for (let i = 0; i < rando; i++){
     finalWordBank.splice(r,1);
 }
 };
-
+#Final function which activates the rest and displays the username
 function testClick(){
 finalWordBank = [];
 genBank = [];
